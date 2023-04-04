@@ -9,7 +9,8 @@ detector = MTCNN()
 size = (512, 512)
 
 # get all the files in a folder, make sure all are image files
-files = glob.glob('./training_data/raw/*')
+files = glob.glob('./input/raw*.jpg') + glob.glob('./input/raw/*.png') + glob.glob('./input/raw/*.jpeg')
+
 
 for fil in files:
     basename = os.path.splitext(os.path.basename(fil))[0]
@@ -46,6 +47,6 @@ for fil in files:
             resized_img = Image.fromarray(cv2.cvtColor(resized_img_cv, cv2.COLOR_BGR2RGB))
             
             # Save the resized image, modify the output directory as needed
-            resized_img.save(f"./training_data/key/{basename}.png", format="PNG")
+            resized_img.save(f"./input/key/{basename}.png", format="PNG")
         else:
             print(f"No face detected in {fil}")
