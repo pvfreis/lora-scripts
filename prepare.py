@@ -1,47 +1,36 @@
 import os
 import glob
+import cv2
+import numpy as np
 from PIL import Image
-import face_recognition
+from mtcnn import MTCNN
 
-size = (512, 512)
+detector = MTCNN()
 
 # get all the files in a folder, make sure all are image files
-files = glob.glob('./training_data/raw/*')
-
-def crop_center_face(image, face_locations):
-    if len(face_locations) > 0:
-        top, right, bottom, left = face_locations[0]
-        face_center_x = (left + right) // 2
-        face_center_y = (top + bottom) // 2
-
-        half_crop_size = min(size) // 2
-        new_left = max(0, face_center_x - half_crop_size)
-        new_right = new_left + size[0]
-        new_top = max(0, face_center_y - half_crop_size)
-        new_bottom = new_top + size[1]
-
-        if new_right > image.width:
-            new_right = image.width
-            new_left = new_right - size[0]
-
-        if new_bottom > image.height:
-            new_bottom = image.height
-            new_top = new_bottom - size[1]
-
-        return image.crop((new_left, new_top, new_right, new_bottom))
-
-    return image.resize(size)
+files = glob.glob('./input/*')
 
 for fil in files:
-    # get the basename, e.g. "dragon.jpg" -> ("dragon", ".jpg")
     basename = os.path.splitext(os.path.basename(fil))[0]
 
     with Image.open(fil) as img:
-        # detect faces
-        face_locations = face_recognition.face_locations(img)
-
-        # crop and center the image around the first detected face
-        centered_img = crop_center_face(img, face_locations)
+        # Convert the PIL image to OpenCV format
+        img_cv = cv2.cvtColor(np.array(img), cv2.COLOR_RGB2BGR)
         
-        # save the centered image
-        centered_img.save(f"./training_data/key/{basename}.png", format="PNG", resample=Image.Resampling.NEAREST)
+        # Detect faces using MTCNN
+        faces = detector.detect_faces(img_cv)
+        
+        if faces:
+            # Use the first detected face (assuming there's only one face in the image)
+            x, y, width, height = faces[0]['box']
+            
+            # Crop the image to the face
+            cropped_img_cv = img_cv[y:y+height, x:x+width]
+            
+            # Convert the cropped OpenCV image back to PIL format
+            cropped_img = Image.fromarray(cv2.cvtColor(cropped_img_cv, cv2.COLOR_BGR2RGB))
+            
+            # Save the cropped image without resizing, modify the output directory as needed
+            cropped_img.save(f"./input/key/{basename}.png", format="PNG")
+        else:
+            print(f"No face detected in {fil}")
