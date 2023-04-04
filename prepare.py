@@ -6,9 +6,10 @@ from PIL import Image
 from mtcnn import MTCNN
 
 detector = MTCNN()
+size = (512, 512)
 
 # get all the files in a folder, make sure all are image files
-files = glob.glob('./input/*')
+files = glob.glob('./training_data/raw/*')
 
 for fil in files:
     basename = os.path.splitext(os.path.basename(fil))[0]
@@ -24,13 +25,27 @@ for fil in files:
             # Use the first detected face (assuming there's only one face in the image)
             x, y, width, height = faces[0]['box']
             
+            # Calculate the center of the face
+            center_x = x + width // 2
+            center_y = y + height // 2
+            
+            # Calculate the cropping coordinates
+            half_size = 256
+            left = max(0, center_x - half_size)
+            top = max(0, center_y - half_size)
+            right = min(img_cv.shape[1], center_x + half_size)
+            bottom = min(img_cv.shape[0], center_y + half_size)
+            
             # Crop the image to the face
-            cropped_img_cv = img_cv[y:y+height, x:x+width]
+            cropped_img_cv = img_cv[top:bottom, left:right]
             
-            # Convert the cropped OpenCV image back to PIL format
-            cropped_img = Image.fromarray(cv2.cvtColor(cropped_img_cv, cv2.COLOR_BGR2RGB))
+            # Resize the cropped image to 512x512
+            resized_img_cv = cv2.resize(cropped_img_cv, size)
             
-            # Save the cropped image without resizing, modify the output directory as needed
-            cropped_img.save(f"./input/key/{basename}.png", format="PNG")
+            # Convert the resized OpenCV image back to PIL format
+            resized_img = Image.fromarray(cv2.cvtColor(resized_img_cv, cv2.COLOR_BGR2RGB))
+            
+            # Save the resized image, modify the output directory as needed
+            resized_img.save(f"./training_data/key/{basename}.png", format="PNG")
         else:
             print(f"No face detected in {fil}")
