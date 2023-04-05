@@ -8,14 +8,14 @@ $reg_data_dir = "" # directory for regularization images, default is not to use 
 # Network settings 
 $network_module = "networks.lora" # # Set the type of network to be trained, default is networks.lora, which is LoRA training. If you want to train LyCORIS (LoCon, LoHa), change this value to lycoris.kohya
 $network_weights = "" # pretrained weights for LoRA network, fill in the LoRA model path if you want to continue training from an existing LoRA model.
-$network_dim = 32 # network dim, usually 4~128, not the bigger the better
-$network_alpha = 32 # network alpha , usually the same value as network_dim or a smaller value, such as half of network_dim to prevent underflow. Default value is 1, using a smaller alpha requires increasing the learning rate.
+$network_dim = 128 # network dim, usually 4~128, not the bigger the better
+$network_alpha = 64 # network alpha , usually the same value as network_dim or a smaller value, such as half of network_dim to prevent underflow. Default value is 1, using a smaller alpha requires increasing the learning rate.
 
 # Train related params
 $resolution = "512,512" # image resolution w,h. Supports non-square, but must be a multiple of 64.
 $batch_size = 1 # batch size
-$max_train_epoches = 5 # max train epoches
-$save_every_n_epochs = 5 # save every n epochs
+$max_train_epoches = 6 # max train epoches
+$save_every_n_epochs = 6 # save every n epochs
 
 $train_unet_only = 0 # train U-Net only, turning this on will sacrifice performance and significantly reduce memory usage. 6G memory can be turned on
 $train_text_encoder_only = 0 # train Text Encoder only 
@@ -32,7 +32,7 @@ $lr_warmup_steps = 0 # warmup steps, only need to fill in this value when lr_sch
 $lr_restart_cycles = 1 # cosine_with_restarts restart cycles, only effective when lr_scheduler is cosine_with_restarts.
 
 # Output settings
-$output_name = "lrao4" # output model name |
+$output_name = "lrao6" # output model name |
 $save_model_as = "safetensors" # model save format: ckpt, pt, safetensors
 
 # Other settings
