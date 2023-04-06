@@ -1,6 +1,8 @@
 #!/bin/bash
 # LoRA train script by @Akegarasu
 
+python3 -m venv venv  
+
 # Train data path | 设置训练用模型、图片
 pretrained_model="./sd-models/v1-5-pruned.safetensors" # base model path | 底模路径
 train_data_dir="./train/lrao"              # train dataset path | 训练数据集路径
