@@ -9,19 +9,19 @@ reg_data_dir=""                           # directory for regularization images 
 # Network settings | 网络设置
 network_module="networks.lora" # 在这里将会设置训练的网络种类，默认为 networks.lora 也就是 LoRA 训练。如果你想训练 LyCORIS（LoCon、LoHa） 等，则修改这个值为 lycoris.kohya
 network_weights=""             # pretrained weights for LoRA network | 若需要从已有的 LoRA 模型上继续训练，请填写 LoRA 模型路径。
-network_dim=32                 # network dim | 常用 4~128，不是越大越好
-network_alpha=32               # network alpha | 常用与 network_dim 相同的值或者采用较小的值，如 network_dim的一半 防止下溢。默认值为 1，使用较小的 alpha 需要提升学习率。
+network_dim=128                 # network dim | 常用 4~128，不是越大越好
+network_alpha=128               # network alpha | 常用与 network_dim 相同的值或者采用较小的值，如 network_dim的一半 防止下溢。默认值为 1，使用较小的 alpha 需要提升学习率。
 
 # Train related params | 训练相关参数
 resolution="512,512"  # image resolution w,h. 图片分辨率，宽,高。支持非正方形，但必须是 64 倍数。
 batch_size=1          # batch size
-max_train_epoches=10  # max train epoches | 最大训练 epoch
-save_every_n_epochs=2 # save every n epochs | 每 N 个 epoch 保存一次
+max_train_epoches=5  # max train epoches | 最大训练 epoch
+save_every_n_epochs=5 # save every n epochs | 每 N 个 epoch 保存一次
 
 train_unet_only=0         # train U-Net only | 仅训练 U-Net，开启这个会牺牲效果大幅减少显存使用。6G显存可以开启
 train_text_encoder_only=0 # train Text Encoder only | 仅训练 文本编码器
 
-noise_offset=0 # noise offset | 在训练中添加噪声偏移来改良生成非常暗或者非常亮的图像，如果启用，推荐参数为0.1
+noise_offset=0.1 # noise offset | 在训练中添加噪声偏移来改良生成非常暗或者非常亮的图像，如果启用，推荐参数为0.1
 keep_tokens=0  # keep heading N tokens when shuffling caption tokens | 在随机打乱 tokens 时，保留前 N 个不变。
 
 # Learning rate | 学习率
@@ -33,7 +33,7 @@ lr_warmup_steps=0                   # warmup steps | 仅在 lr_scheduler 为 con
 lr_restart_cycles=1                 # cosine_with_restarts restart cycles | 余弦退火重启次数，仅在 lr_scheduler 为 cosine_with_restarts 时起效。
 
 # Output settings | 输出设置
-output_name="aki"           # output model name | 模型保存名称
+output_name="lrao14"           # output model name | 模型保存名称
 save_model_as="safetensors" # model save ext | 模型保存格式 ckpt, pt, safetensors
 
 # 其他设置
@@ -44,7 +44,7 @@ clip_skip=2                      # clip skip | 玄学 一般用 2
 
 # 优化器设置
 use_8bit_adam=1 # use 8bit adam optimizer | 使用 8bit adam 优化器节省显存，默认启用。部分 10 系老显卡无法使用，修改为 0 禁用。
-use_lion=0      # use lion optimizer | 使用 Lion 优化器
+use_lion=1     # use lion optimizer | 使用 Lion 优化器
 
 # LyCORIS 训练设置
 algo="lora"  # LyCORIS network algo | LyCORIS 网络算法 可选 lora、loha。lora即为locon
