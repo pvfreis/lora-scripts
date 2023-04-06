@@ -14,8 +14,8 @@ $network_alpha = 128 # network alpha , usually the same value as network_dim or 
 # Train related params
 $resolution = "512,512" # image resolution w,h. Supports non-square, but must be a multiple of 64.
 $batch_size = 1 # batch size
-$max_train_epoches = 10 # max train epoches
-$save_every_n_epochs = 10 # save every n epochs
+$max_train_epoches = 5 # max train epoches
+$save_every_n_epochs = 5 # save every n epochs
 
 $train_unet_only = 0 # train U-Net only, turning this on will sacrifice performance and significantly reduce memory usage. 6G memory can be turned on
 $train_text_encoder_only = 0 # train Text Encoder only 
@@ -27,12 +27,12 @@ $keep_tokens = 0 # keep heading N tokens when shuffling caption tokens 。
 $lr = "1e-4"
 $unet_lr = "1e-4"
 $text_encoder_lr = "1e-5"
-$lr_scheduler = "cosine_with_restarts" # "linear", "cosine", "cosine_with_restarts", "polynomial", "constant", "constant_with_warmup"
+$lr_scheduler = "cosine" # "linear", "cosine", "cosine_with_restarts", "polynomial", "constant", "constant_with_warmup"
 $lr_warmup_steps = 0 # warmup steps, only need to fill in this value when lr_scheduler is constant_with_warmup
 $lr_restart_cycles = 1 # cosine_with_restarts restart cycles, only effective when lr_scheduler is cosine_with_restarts.
 
 # Output settings
-$output_name = "lrao9" # output model name |
+$output_name = "lrao14" # output model name |
 $save_model_as = "safetensors" # model save format: ckpt, pt, safetensors
 
 # Other settings
