@@ -1,6 +1,10 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
 # LoRA train script by @Akegarasu
-. venv/bin/activate
+if [[ -z "${VIRTUAL_ENV}" ]]; then
+  source venv/bin/activate
+  exec "$0" "$@"
+fi
 # Train data path | 设置训练用模型、图片
 pretrained_model="./sd-models/v1-5-pruned.safetensors" # base model path | 底模路径
 train_data_dir="./train/lrao"              # train dataset path | 训练数据集路径
