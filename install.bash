@@ -14,7 +14,6 @@ echo "Installing deps..."
 cd ./sd-scripts
 
 pip install --upgrade -r requirements.txt
-pip install triton==2.0.0.dev20221202
 pip install --upgrade lion-pytorch lycoris-lora
 
 echo "Install completed"
