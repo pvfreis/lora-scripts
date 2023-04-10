@@ -19,8 +19,8 @@ network_alpha=128               # network alpha | 常用与 network_dim 相同�
 # Train related params | 训练相关参数
 resolution="512,512"  # image resolution w,h. 图片分辨率，宽,高。支持非正方形，但必须是 64 倍数。
 batch_size=1          # batch size
-max_train_epoches=5  # max train epoches | 最大训练 epoch
-save_every_n_epochs=5 # save every n epochs | 每 N 个 epoch 保存一次
+max_train_epoches=3  # max train epoches | 最大训练 epoch
+save_every_n_epochs=3 # save every n epochs | 每 N 个 epoch 保存一次
 
 train_unet_only=0         # train U-Net only | 仅训练 U-Net，开启这个会牺牲效果大幅减少显存使用。6G显存可以开启
 train_text_encoder_only=0 # train Text Encoder only | 仅训练 文本编码器
@@ -37,7 +37,7 @@ lr_warmup_steps=0                   # warmup steps | 仅在 lr_scheduler 为 con
 lr_restart_cycles=1                 # cosine_with_restarts restart cycles | 余弦退火重启次数，仅在 lr_scheduler 为 cosine_with_restarts 时起效。
 
 # Output settings | 输出设置
-output_name="lrao14"           # output model name | 模型保存名称
+output_name="lrao15"           # output model name | 模型保存名称
 save_model_as="safetensors" # model save ext | 模型保存格式 ckpt, pt, safetensors
 
 # 其他设置
