@@ -12,7 +12,7 @@ def read_prompts_from_json(file_path):
     with open(file_path, "r") as file:
         return json.load(file)
     
-json_file_path = os.path.join(os.getcwd(), "prompts.json")
+json_file_path = os.path.join(os.getcwd(), "stable-diffusion-webui/prompts.json")
 
 prompts = read_prompts_from_json(json_file_path)
 
