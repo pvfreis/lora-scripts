@@ -1,8 +1,10 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
 # LoRA train script by @Akegarasu
-
-python3 -m venv venv  
-
+if [[ -z "${VIRTUAL_ENV}" ]]; then
+  source venv/bin/activate
+  exec "$0" "$@"
+fi
 # Train data path | 设置训练用模型、图片
 pretrained_model="meadowrun/code0/sd-models/v1-5-pruned.safetensors" # base model path | 底模路径
 train_data_dir="meadowrun/code0/train/lrao"              # train dataset path | 训练数据集路径
