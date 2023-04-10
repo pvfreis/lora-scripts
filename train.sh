@@ -47,7 +47,7 @@ persistent_data_loader_workers=0 # persistent dataloader workers | 容易爆内�
 clip_skip=2                      # clip skip | 玄学 一般用 2
 
 # 优化器设置
-use_8bit_adam=1 # use 8bit adam optimizer | 使用 8bit adam 优化器节省显存，默认启用。部分 10 系老显卡无法使用，修改为 0 禁用。
+use_8bit_adam=0 # use 8bit adam optimizer | 使用 8bit adam 优化器节省显存，默认启用。部分 10 系老显卡无法使用，修改为 0 禁用。
 use_lion=1     # use lion optimizer | 使用 Lion 优化器
 
 # LyCORIS 训练设置
