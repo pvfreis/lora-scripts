@@ -10,7 +10,6 @@ __pycache__
 /models/deepbooru
 /models/karlo
 /models/VAE
-/models/VAE-approx
 /GFPGANv1.3.pth
 /gfpgan/weights/*.pth
 /ui-config.json
