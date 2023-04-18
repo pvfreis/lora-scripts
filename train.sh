@@ -6,8 +6,8 @@ if [[ -z "${VIRTUAL_ENV}" ]]; then
   exec "$0" "$@"
 fi
 # Train data path | 设置训练用模型、图片
-pretrained_model="meadowrun/code0/sd-models/v1-5-pruned.safetensors" # base model path | 底模路径
-train_data_dir="meadowrun/code0/train/lrao"              # train dataset path | 训练数据集路径
+pretrained_model="~/sd-models/v1-5-pruned.safetensors" # base model path | 底模路径
+train_data_dir="~/input/lrao"              # train dataset path | 训练数据集路径
 reg_data_dir=""                           # directory for regularization images | 正则化数据集路径，默认不使用正则化图像。
 
 # Network settings | 网络设置
