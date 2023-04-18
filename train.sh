@@ -81,6 +81,9 @@ fi
 
 if [ $noise_offset ]; then extArgs+=("--noise_offset $noise_offset"); fi
 
+echo "Path to Data dir:$train_data_dir"
+echo "Path to model:$pretrained_model"
+
 accelerate launch --num_cpu_threads_per_process=8 "./sd-scripts/train_network.py" \
   --enable_bucket \
   --pretrained_model_name_or_path=$pretrained_model \
