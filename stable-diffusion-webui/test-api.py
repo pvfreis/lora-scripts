@@ -32,7 +32,7 @@ start_time = None
 for index, prompt in enumerate(prompts):
     payload = {
         "prompt": prompt,
-        "negative_prompt": "photo, photography, sketch, photograph, DSLR, selfie, bad drawing, sketch, monochrome",
+        "negative_prompt": "photo, photography, photograph, DSLR, selfie, bad drawing, sketch, monochrome",
         "steps": 32,
         "sampler_index": 'DPM++ 2M Karras',
         "seed": -1,
