@@ -20,7 +20,7 @@ $save_every_n_epochs = 5 # save every n epochs
 $train_unet_only = 0 # train U-Net only, turning this on will sacrifice performance and significantly reduce memory usage. 6G memory can be turned on
 $train_text_encoder_only = 0 # train Text Encoder only 
 
-$noise_offset = 0.1 # noise offset  noise offset, add noise offset during training to improve generation of very dark or very bright images, recommended parameter is 0.1 if enabled
+$noise_offset = 0.1 # Noise offset, add noise offset during training to improve generation of very dark or very bright images, recommended parameter is 0.1 if enabled
 $keep_tokens = 0 # keep heading N tokens when shuffling caption tokens 。
 
 # Learning rate | 
