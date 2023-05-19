@@ -33,7 +33,7 @@ for index, prompt in enumerate(prompts):
     payload = {
         "prompt": prompt,
         "negative_prompt": "photo, photography, photograph, DSLR, selfie, bad drawing, sketch, monochrome",
-        "steps": 32,
+        "steps": 36,
         "sampler_index": 'DPM++ 2M Karras',
         "seed": -1,
     }
