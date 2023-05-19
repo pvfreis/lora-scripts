@@ -32,7 +32,7 @@ start_time = None
 for index, prompt in enumerate(prompts):
     payload = {
         "prompt": prompt,
-        "negative_prompt": "photo, photography, photograph, DSLR, selfie, bad drawing, sketch, monochrome",
+        "negative_prompt": "photo, photography, photograph, DSLR, ((((ugly)))), (((duplicate))), ((morbid)), ((mutilated)), [out of frame], extra fingers, mutated hands, ((poorly drawn hands)), ((poorly drawn face)), (((mutation))), (((deformed))), ((ugly)), blurry, ((bad anatomy)), (((bad proportions))), ((extra limbs)), cloned face, (((disfigured))), out of frame, ugly, extra limbs, (bad anatomy), gross proportions, (malformed limbs), ((missing arms)), ((missing legs)), (((extra arms))), (((extra legs))), mutated hands, (fused fingers), (too many fingers), (((long neck)))",
         "steps": 36,
         "sampler_index": 'DPM++ 2M Karras',
         "seed": -1,
