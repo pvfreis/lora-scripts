@@ -5,9 +5,16 @@ if [[ -z "${VIRTUAL_ENV}" ]]; then
   source venv/bin/activate
   exec "$0" "$@"
 fi
+
+# Check if the TRAIN_DATA_DIR environment variable is set
+if [[ -z "${INPUT_PATH}" ]]; then
+  echo "INPUT_PATH environment variable is not set. Exiting."
+  exit 1
+fi
+
 # Train data path | 设置训练用模型、图片
 pretrained_model="sd-models/v1-5-pruned.safetensors" # base model path | 底模路径
-train_data_dir="input/lrao"              # train dataset path | 训练数据集路径
+train_data_dir="input/$INPUT_PATH"              # train dataset path | 训练数据集路径
 reg_data_dir=""                           # directory for regularization images | 正则化数据集路径，默认不使用正则化图像。
 
 # Network settings | 网络设置
