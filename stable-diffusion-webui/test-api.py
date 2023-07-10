@@ -34,7 +34,7 @@ for index, prompt in enumerate(prompts):
     payload = {
         "prompt": prompt,
         "negative_prompt": "photo, photography, photograph, DSLR, ((((ugly)))), (((duplicate))), ((morbid)), ((mutilated)), [out of frame], extra fingers, mutated hands, ((poorly drawn hands)), ((poorly drawn face)), (((mutation))), (((deformed))), ((ugly)), blurry, ((bad anatomy)), (((bad proportions))), ((extra limbs)), cloned face, (((disfigured))), out of frame, ugly, extra limbs, (bad anatomy), gross proportions, (malformed limbs), ((missing arms)), ((missing legs)), (((extra arms))), (((extra legs))), mutated hands, (fused fingers), (too many fingers), (((long neck)))",
-        "steps": 36,
+        "steps": 30,
         "sampler_index": 'DPM++ 2M Karras',
         "seed": -1,
     }
@@ -42,9 +42,9 @@ for index, prompt in enumerate(prompts):
     highres_payload = {
         "enable_hr": True,
         "hr_upscaler": "Latent",
-        "hr_scale": 1,
+        "hr_scale": 2,
         "hr_second_pass_steps": 16,
-        "denoising_strength": 0.6,
+        "denoising_strength": 0.5,
     }
     payload.update(highres_payload)
 
