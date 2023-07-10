@@ -76,7 +76,7 @@ for index, prompt in enumerate(prompts):
         pnginfo.add_text("parameters", response2.json().get("info"))
 
         # Save the images with different filenames in the timestamped folder
-        image_filename = os.path.join(folder_path, f"{prompt}_{index}_{i}.png")
+        image_filename = os.path.join(folder_path, f"{index}_{i}.png")
         image.save(image_filename, pnginfo=pnginfo)
 
 
