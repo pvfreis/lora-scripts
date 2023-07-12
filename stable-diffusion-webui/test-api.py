@@ -79,16 +79,6 @@ for index, prompt in enumerate(prompts):
         image_filename = os.path.join(folder_path, f"Avatar_{index}_{i}.png")
         image.save(image_filename, pnginfo=pnginfo)
 
-
-# Set source and dest path for info.json
-json_source_path = "/home/ubuntu/sky_workdir/lora-scripts/input/lrao/80_lrao/info.json"
-json_dest_path = os.path.join(folder_path, "info.json")
-# Execute the cp command
-subprocess.run(["cp", json_source_path, json_dest_path], check=True)
-
-print(f"info.json copied to: {json_dest_path}")
-
-
 end_time = time.time()  # End time
 elapsed_time = end_time - start_time  # Calculate elapsed time
 # Print the elapsed time
